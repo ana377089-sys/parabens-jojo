@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário, Josielle!</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;1,600&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <style>
+        :root {
+            --azul-claro: #e3f2fd;
+            --azul-principal: #1976d2;
+            --azul-escuro: #0d47a1;
+            --texto: #333;
+            --dourado: #ffd700;
+            --grifinoria: #740001;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--azul-claro);
+            color: var(--texto);
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+            transition: background-color 1s;
+        }
+
+        /* --- ABERTURA --- */
+        #abertura-magica {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #1a237e 0%, #000 100%);
+            color: white;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .castelo-click { font-size: 80px; filter: drop-shadow(0 0 10px var(--dourado)); transition: 0.3s; }
+        .castelo-click:hover { transform: scale(1.1); }
+
+        #foto-rainha-container { display: none; animation: fadeIn 2s forwards; }
+        .foto-rainha { width: 250px; height: 250px; object-fit: cover; border-radius: 50%; border: 5px solid var(--dourado); box-shadow: 0 0 30px var(--dourado); }
+
+        /* --- CONTEÚDO --- */
+        #conteudo-principal { display: none; }
+
+        .timeline-section { padding: 40px 20px; max-width: 900px; margin: auto; }
+
+        .momento-card {
+            display: flex;
+            align-items: center;
+            margin-bottom: 60px;
+            background: white;
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .momento-card:nth-child(even) { flex-direction: row-reverse; text-align: right; }
+
+        .momento-card img {
+            width: 300px;
+            height: 350px;
+            object-fit: cover;
+            border-radius: 15px;
+            border: 4px solid var(--azul-claro);
+        }
+
+        .momento-texto { flex: 1; min-width: 250px; }
+        .momento-texto h3 { color: var(--azul-escuro); font-family: 'Playfair Display', serif; margin-top: 0; }
+
+        .interactive-section { text-align: center; padding: 50px 20px; background: #fdfdfd; }
+        .btn { background: var(--azul-principal); color: white; border: none; padding: 12px 25px; border-radius: 25px; cursor: pointer; margin: 5px; transition: 0.3s; }
+        .btn:hover { background: var(--azul-escuro); transform: scale(1.05); }
+
+        #carta { display: none; max-width: 600px; margin: 20px auto; padding: 30px; background: #fffdf5; border-left: 5px solid var(--grifinoria); font-family: 'Playfair Display', serif; text-align: left; }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    </style>
+</head>
+<body>
+
+    <!-- ABERTURA -->
+    <div id="abertura-magica" onclick="revelarSite()">
+        <div id="instrucao">
+            <div class="castelo-click">🏰</div>
+            <p>Toque no castelo para entrar no reino de Josielle...</p>
+        </div>
+        <div id="foto-rainha-container">
+            <!-- FOTO: RAINHA -->
+            <img src="https://i.ibb.co/sJPKKMRP/20240602-184200.jpg" class="foto-rainha">
+            <h2 style="font-family: 'Cinzel', serif; color: var(--dourado);">Minha Soberana Rainha</h2>
+            <p>(Toque para continuar)</p>
+        </div>
+    </div>
+
+    <div id="conteudo-principal">
+        <header style="text-align: center; padding: 60px 20px;">
+            <h1 style="font-size: 3rem; color: var(--azul-escuro); font-family: 'Playfair Display', serif;">O Livro de Memórias de Josi & Lalau</h1>
+            <p>Porque somos gêmeas conectadas pelo destino (e pelo cursinho).</p>
+        </header>
+
+        <section class="timeline-section">
+
+            <!-- 2023: O COMEÇO -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/XfndBCpP/20230922-121743.jpg">
+                <div class="momento-texto">
+                    <h3>2023: Onde o caos começou</h3>
+                    <p>O início de uma era! Mal sabíamos que desse primeiro encontro sairia a melhor conexão de todas.</p>
+                </div>
+            </div>
+
+            <!-- LELE DA CUCA-->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/GwhsRxz/Screenshot-20240505-103638-Gallery.jpg">
+                <div class="momento-texto">
+                    <h3>Sobreviventes do Cursinho 🧠</h3>
+                    <p>O lugar era horrível? Era. Mas a gente fazia ser incrível só por estarmos juntas.</p>
+                </div>
+            </div>
+
+            <!-- MEIAS DIVERTIDAS -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/XkbTmV0t/Screenshot-20240505-103508-Gallery.jpg">
+                <div class="momento-texto">
+                    <h3>Dobby estaria orgulhoso! 🧦</h3>
+                    <p>Quem tem estilo, tem estilo. Nossas meias divertidas dizem muito sobre nossa sanidade mental (que é zero!).</p>
+                </div>
+            </div>
+
+            <!-- CONCERTO -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/ZjcV0s4/20240410-194901.jpg">
+                <div class="momento-texto">
+                    <h3>Damas da Música Clássica 🎻</h3>
+                    <p>Aquele momento em que fingimos ser finas ouvindo um concerto.</p>
+                </div>
+            </div>
+
+            <!-- SHOPPING -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/xcgP2cV/20240602-201326.jpg">
+                <div class="momento-texto">
+                    <h3>Ladra de Gincanas em Hogwarts ⚡</h3>
+                    <p>Este dia foi o evento de HP. Você provou que se a medicina não der certo, pode ser uma excelente ladra de gincanas. Sonserina teria orgulho!</p>
+                </div>
+            </div>
+
+            <!--A QUE ILUMINA TUDO -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/HDHpvP1y/20240602-163836.jpg">
+                <div class="momento-texto">
+                    <h3>Você ilumina tudo (literalmente!) ✨</h3>
+                    <p>Eu com essa caara do teu lado, porque tu brilhando mais que qualquer estrela. Sua luz contagia todo mundo!</p>
+                </div>
+            </div>
+
+            <!-- ONIBUS PREFERIDO -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/ntc6V31/Screenshot-20240505-103531-Gallery.jpg">
+                <div class="momento-texto">
+                    <h3>Nosso "Expresso de Hogwarts" (ou quase) 🚌</h3>
+                    <p>No nosso ônibus preferido, onde o trajeto ficava pequeno perto de tantas risadas.</p>
+                </div>
+            </div>
+
+            <!-- DESTRUÍDAS NO ENEM -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/2Y0ZP4mz/Screenshot-20240505-103553-Gallery.jpg">
+                <div class="momento-texto">
+                    <h3>Indo pro ENEM: O Terror 💀</h3>
+                    <p>A gente tava destruída? Tava. Mas tava junta! Duas lendas prontas para (tentar) vencer o Inep.</p>
+                </div>
+            </div>
+
+            <!-- FOTO ZOADA -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/TMgH16Fy/IMG-20260504-WA0001.jpg">
+                <div class="momento-texto">
+                    <h3>Nossa Especialidade: Fotos Ruins 🤪</h3>
+                    <p>Sempre saímos mal, mas são as nossas fotos preferidas porque o que importa é o momento (e o mico).</p>
+                </div>
+            </div>
+
+            <!-- SE COMPLETANDO / GÊMEAS -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/SwhjGG81/20240410-194809.jpg">
+                <div class="momento-texto">
+                    <h3>Gêmeas Conectadas 👯‍♀️</h3>
+                    <p>A gente se completa de um jeito que assusta. Uma alma em dois corpos (de médicas!).</p>
+                </div>
+            </div>
+
+            <!-- CORAÇÃO -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/C52TK88P/Screenshot-20240505-103658-Gallery.jpg">
+                <div class="momento-texto">
+                    <h3>Amor em forma de coração ❤️</h3>
+                    <p>Aquele clichê que a gente ama, porque nossa amizade é pura fofura.</p>
+                </div>
+            </div>
+
+            <!-- FELIZES -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/84YKXm6N/Screenshot-20240505-103452-Gallery.jpg">
+                <div class="momento-texto">
+                    <h3>Felicidade Genuína ☀️</h3>
+                    <p>Não precisa de legenda, o sorriso diz tudo quando estamos juntas.</p>
+                </div>
+            </div>
+
+            <!-- A MAIS LINDA -->
+            <div class="momento-card" style="border: 3px solid var(--dourado);">
+                <img src="https://i.ibb.co/GQnh8K7J/Screenshot-20240505-103853-Instagram.jpg">
+                <div class="momento-texto">
+                    <h3>A minha Preferida 👑</h3>
+                    <p>O registro mais lindo de uma amizade que vai durar até o pós-doutorado e além.</p>
+                </div>
+            </div>
+<!-- BLOCO DAS GATINHAS -->
+            <div class="momento-card">
+                <img src="https://i.ibb.co/Kjhnbpf7/Screenshot-20260505-201834-Instagram.jpg">
+                <div class="momento-texto">
+                    <h3>O Cantinho das Felinas 🐾</h3>
+                    <p>ALERTA DE FOTO PESADÍSSIMA, esse planeta precisa fazer uma dieta urgente! Cuidado para o seu celular nao cair e quebrar. FOI AVISADO!!!!  O amor mais puro em uma foto só.</p>
+                </div>
+            </div>
+
+            <!--FOFUXAS-->
+            <div style="text-align: center; margin: 60px 0; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.05);">
+                <h3 style="color: var(--azul-escuro); font-family: 'Playfair Display', serif;">Momentos em Movimento 🎥</h3>
+                <p>Porque algumas memórias precisam de play!</p>
+                <video width="100%" style="max-width: 320px; border-radius: 15px; border: 5px solid var(--azul-claro);" controls>
+                    <source src="https://cdn.discordapp.com/attachments/1490088160712065256/1501381716022136974/20240602_173845_exported_stabilized_1778022026187.mp4?ex=69fbde2f&is=69fa8caf&hm=d9b076623aff4513e68958f318be83c10e50002aabc69fdab3468a3f0f2d50ef&" type="video/mp4">
+                    
+                </video>
+            </div>
+
+            <!-- FLORES FINAL -->
+            <div style="text-align: center; margin-top: 50px;">
+                <img src="https://i.ibb.co/RkWcvX5Y/IMG-20231016-WA0010.jpg" style="width: 80%; border-radius: 20px; box-shadow: 0 0 20px var(--azul-claro);">
+                <p><i>Duas flores para a flor mais linda do meu jardim.</i></p>
+            </div>
+
+        </section>
+
+        <section class="interactive-section">
+            <h2>Mimos de Hogwarts 🪄</h2>
+            <button class="btn" onclick="lancarLumus()">Lumus! ✨</button>
+            <button class="btn" onclick="abrirCarta()">Abrir Carta de Hogwarts ✉️</button>
+
+            <div id="carta">
+                <p>"Renda-se, como eu me rendi." – Clarice Lispector.</p>
+                <p>Minha gêmea de alma, do cursinho péssimo até o infinito, você é meu Porto Seguro. Que seu dia seja tão mágico quanto o feitiço Lumus e tão divertido quanto nossas meias.</p>
+                <p align="right"><strong>Com todo amor, Lalau</strong></p>
+            </div>
+        </section>
+
+        <footer style="padding: 40px; text-align: center; background: white;">
+            <p>Até onde a amizade pode levar? Até o coração. 💙</p>
+        </footer>
+    </div>
+
+    <script>
+        let siteRevelado = false;
+        function revelarSite() {
+            if (!siteRevelado) {
+                document.getElementById('instrucao').style.display = 'none';
+                document.getElementById('foto-rainha-container').style.display = 'block';
+                confetti({ particleCount: 150, colors: ['#ffd700', '#ffffff'] });
+                siteRevelado = true;
+            } else {
+                document.getElementById('abertura-magica').style.display = 'none';
+                document.getElementById('conteudo-principal').style.display = 'block';
+                window.scrollTo(0,0);
+            }
+        }
+
+        function lancarLumus() {
+            document.body.style.backgroundColor = "#fff9c4";
+            alert("Lumus! Que sua vida seja sempre iluminada! ✨");
+            setTimeout(() => { document.body.style.backgroundColor = "#e3f2fd"; }, 3000);
+        }
+
+        function abrirCarta() {
+            const carta = document.getElementById('carta');
+            carta.style.display = carta.style.display === 'block' ? 'none' : 'block';
+            carta.scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
